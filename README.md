@@ -27,7 +27,7 @@ Ethiopian-Bank-CX-Analysis/
 │   ├── theme_extraction.py
 │   └── load_to_postgres.py
 ├── notebooks/             # Exploratory analysis & visualization
-│   ├── 01_eda.ipynb
+│   ├── 01_scraping_and_preprocessing.ipynb
 │   ├── 02_sentiment_analysis.ipynb
 │   ├── 03_theme_clustering.ipynb
 │   └── 04_final_insights.ipynb
