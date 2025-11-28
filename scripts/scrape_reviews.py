@@ -2,7 +2,7 @@ import pandas as pd
 from google_play_scraper import reviews, Sort
 import time
 
-def scrape_reviews_for_app(bank_name, package_id, total=400, chunk_size=200):
+def scrape_reviews_for_app(bank_name, package_id, total=600, chunk_size=200):
     """
     Scrape Google Play Store reviews for a single app.
 

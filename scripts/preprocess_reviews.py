@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 def remove_duplicates(df):
     """
@@ -66,6 +67,24 @@ def standardize_bank_names(df):
 
 
 
+def remove_non_latin_reviews(df):
+    """
+    Remove reviews containing non-Latin scripts (Amharic, Arabic, etc.)
+    Keeps only English + basic punctuation + emojis.
+    """
+    before = len(df)
+    
+    # Anything outside basic ASCII = non-Latin script
+    non_latin_mask = df["content"].fillna("").astype(str).str.contains(r'[^\x00-\x7F]', regex=True)
+    
+    df = df[~non_latin_mask].copy()
+    
+    after = len(df)
+    print(f"Removed {before - after} reviews with non-Latin characters (Amharic/Arabic/etc)")
+    print(f"→ Kept {after:,} clean English reviews for accurate sentiment analysis")
+    
+    return df
+
 def select_required_columns(df):
     """
     Keep only the required columns:
@@ -106,6 +125,7 @@ def preprocess_pipeline(df):
     # 1–5. Apply all cleaning steps
     df = remove_duplicates(df)
     df = remove_empty_reviews(df)
+    df = remove_non_latin_reviews(df)
     df = normalize_dates(df)
     df = standardize_bank_names(df)
     df = select_required_columns(df)
