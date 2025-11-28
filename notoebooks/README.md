@@ -6,7 +6,7 @@ This folder contains Jupyter notebooks used for exploration, prototyping, and fi
 
 | Notebook                     | Purpose                                      |
 |------------------------------|----------------------------------------------|
-| 01_eda.ipynb                 | Initial data loading, cleaning & basic stats |
+| 01_scraping_and_preprocessing.ipynb| Initial data loading, cleaning & basic stats |
 | 02_sentiment_analysis.ipynb  | DistilBERT + VADER sentiment scoring & comparison |
 | 03_theme_clustering.ipynb    | Keyword/n-gram extraction + theme grouping   |
 | 04_final_insights.ipynb     | Final plots, cross-bank comparison & recommendations (used for report) |
