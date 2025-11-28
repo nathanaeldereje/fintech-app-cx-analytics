@@ -1,14 +1,10 @@
-#### 2. notebooks/README.md
-```markdown
 # Notebooks – Exploratory Analysis & Visualizations
 
-This folder contains Jupyter notebooks used for exploration, prototyping, and final stakeholder visualizations.
+This directory contains **Jupyter notebooks** dedicated to exploratory data analysis (EDA), prototyping, and generating final visualizations.
 
-| Notebook                     | Purpose                                      |
-|------------------------------|----------------------------------------------|
-| 01_scraping_and_preprocessing.ipynb| Initial data loading, cleaning & basic stats |
-| 02_sentiment_analysis.ipynb  | DistilBERT + VADER sentiment scoring & comparison |
-| 03_theme_clustering.ipynb    | Keyword/n-gram extraction + theme grouping   |
-| 04_final_insights.ipynb     | Final plots, cross-bank comparison & recommendations (used for report) |
-
-These notebooks are for exploration only. The reproducible pipeline lives in `/scripts/`.
+| Notebook | Purpose |
+| :--- | :--- |
+| **`01_scraping_and_preprocessing.ipynb`** | Initial **data loading**, cleaning & calculating basic descriptive statistics. |
+| **`02_sentiment_analysis.ipynb`** | Implementation of **DistilBERT** and **VADER** sentiment scoring models and comparison. |
+| **`03_theme_clustering.ipynb`** | **Topic modeling** via keyword/n-gram extraction and grouping related themes. |
+| **`04_final_insights.ipynb`** | Generation of final plots, **cross-bank comparison**, and data-driven recommendations (used for the report). |
