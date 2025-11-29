@@ -18,6 +18,7 @@ Help Ethiopian banks improve customer retention and satisfaction by turning raw 
 
 ## Project Structure
 
+```bash
 Ethiopian-Bank-CX-Analysis/
 ├── data/                  # Raw & processed CSV files
 ├── scripts/               # Production-ready Python scripts
@@ -35,7 +36,7 @@ Ethiopian-Bank-CX-Analysis/
 ├── .gitignore
 ├── requirements.txt
 └── README.md
-
+```
 
 
 ## Quick Start
