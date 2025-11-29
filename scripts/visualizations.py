@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from wordcloud import WordCloud
 
 def plot_bank_cx_insights(df: pd.DataFrame, bank_sentiment: pd.Series):
     """
@@ -63,3 +64,72 @@ def plot_bank_cx_insights(df: pd.DataFrame, bank_sentiment: pd.Series):
     # Adjust layout to prevent overlap and display the figure
     plt.tight_layout()
     plt.show()
+
+
+
+def plot_top_keywords_per_bank(df_keywords: pd.DataFrame, top_n: int = 10):
+    """Horizontal bar charts of top keywords per bank (one subplot per bank)"""
+    banks = ["CBE", "BOA", "DASHEN"]  # adjust if you have more/less
+    bank_names = {"CBE": "Commercial Bank of Ethiopia", "BOA": "Bank of Abyssinia", "DASHEN": "Dashen Bank"}
+
+    fig, axes = plt.subplots(3, 1, figsize=(12, 14))
+    colors = {"CBE": "#66b3ff", "BOA": "#ff9999", "DASHEN": "#99ff99"}
+
+    for idx, bank in enumerate(banks):
+        top = df_keywords[df_keywords["Bank"] == bank].head(top_n)
+        axes[idx].barh(top["Keyword"], top["TF-IDF Score"], color=colors[bank])
+        axes[idx].set_title(f"Top {top_n} Keywords – {bank_names.get(bank, bank)}", fontsize=14, pad=10)
+        axes[idx].invert_yaxis()
+        axes[idx].set_xlabel("TF-IDF Score")
+
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_theme_distribution(theme_by_bank: pd.DataFrame):
+    """Stacked horizontal bar chart of themes per bank"""
+    plt.figure(figsize=(12, 8))
+    theme_by_bank.plot(kind="barh", stacked=True, cmap="Set3", figsize=(12, 8))
+    plt.title("Theme Distribution by Bank", fontsize=18, fontweight="bold", pad=20)
+    plt.xlabel("Number of Reviews", fontsize=12)
+    plt.ylabel("Bank", fontsize=12)
+    plt.legend(title="Theme", bbox_to_anchor=(1.05, 1), loc="upper left", fontsize=10)
+    plt.tight_layout()
+    plt.show()
+
+
+    
+
+
+def plot_wordclouds(df: pd.DataFrame, banks: list = None):
+    """Generate one word cloud per bank"""
+    if banks is None:
+        banks = ["CBE", "BOA", "DASHEN"]
+
+    bank_names = {"CBE": "Commercial Bank of Ethiopia", "BOA": "Bank of Abyssinia", "DASHEN": "Dashen Bank"}
+
+    fig, axes = plt.subplots(1, len(banks), figsize=(18, 8))
+    if len(banks) == 1:
+        axes = [axes]
+
+    for ax, bank in zip(axes, banks):
+        text = " ".join(review for review in df[df["bank"] == bank]["processed_review"].dropna())
+        if not text:
+            text = "no reviews"
+
+        wc = WordCloud(
+            background_color="white",
+            max_words=80,
+            colormap="viridis",
+            width=800,
+            height=400
+        ).generate(text)
+
+        ax.imshow(wc, interpolation="bilinear")
+        ax.set_title(f"{bank_names.get(bank, bank)}\nWord Cloud", fontsize=16)
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.show()
+
+    

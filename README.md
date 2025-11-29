@@ -46,6 +46,8 @@ git clone https://github.com/nathanaeldereje/fintech-app-cx-analytics.git
 cd ethiopian-bank-app-reviews
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
+# 2. Download the specific spaCy model
+python -m spacy download en_core_web_sm
 python scripts/scrape_reviews.py   # collects ~400+ reviews per bank
 ```
 
