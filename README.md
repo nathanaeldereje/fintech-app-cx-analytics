@@ -51,9 +51,9 @@ python scripts/scrape_reviews.py   # collects ~400+ reviews per bank
 
 ## Banks Analyzed
 Bank,App Name,Play Store Rating
-Commercial Bank of Ethiopia,CBE Birr,4.2★
-Bank of Abyssinia,Abyssinia Mobile Banking,3.4★
-Dashen Bank,Amole,4.1★
+Commercial Bank of Ethiopia,4.2★
+Bank of Abyssinia,3.4★
+Dashen Bank,,4.1★
 
 Final report (PDF) and all visualizations available in /notebooks/04_final_insights.ipynb and the submitted report.
 
