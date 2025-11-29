@@ -41,7 +41,7 @@ Ethiopian-Bank-CX-Analysis/
 ## Quick Start
 
 ```bash
-git clone https://github.com/yourname/ethiopian-bank-app-reviews.git
+git clone https://github.com/nathanaeldereje/fintech-app-cx-analytics.git
 cd ethiopian-bank-app-reviews
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
