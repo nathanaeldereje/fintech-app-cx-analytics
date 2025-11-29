@@ -2,9 +2,9 @@
 
 **Omega Consultancy – Week 2 Data Engineering & Analytics Challenge**  
 Analyzing user satisfaction for the three largest Ethiopian mobile banking apps:
-- Commercial Bank of Ethiopia (CBE Birr)
-- Bank of Abyssinia (Abyssinia Mobile)
-- Dashen Bank (Amole)
+- Commercial Bank of Ethiopia 
+- Bank of Abyssinia
+- Dashen Bank
 
 ## Business Objective
 Help Ethiopian banks improve customer retention and satisfaction by turning raw Google Play Store reviews into actionable insights on sentiment, recurring themes, pain points, and feature requests.
