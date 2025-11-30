@@ -43,7 +43,7 @@ Ethiopian-Bank-CX-Analysis/
 
 ```bash
 git clone https://github.com/nathanaeldereje/fintech-app-cx-analytics.git
-cd ethiopian-bank-app-reviews
+cd fintech-app-cx-analytics
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 # 2. Download the specific spaCy model

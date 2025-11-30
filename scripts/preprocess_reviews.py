@@ -65,8 +65,47 @@ def standardize_bank_names(df):
     print("🔹 Standardized bank names.")
     return df
 
-
-
+def balance_dataset_by_bank(df, reviews_per_bank=450, random_state=42):
+    """
+    Balances the dataset to exactly `reviews_per_bank` per bank.
+    Downsamples if too many, raises error if too few.
+    
+    Parameters:
+        df (pd.DataFrame): DataFrame with 'bank' column
+        reviews_per_bank (int): Target number per bank (e.g. 450 or 400)
+        random_state (int): For reproducible sampling
+    
+    Returns:
+        pd.DataFrame: Perfectly balanced dataset
+    """
+    print(f"Balancing dataset to exactly {reviews_per_bank} reviews per bank...\n")
+    
+    balanced_dfs = []
+    bank_counts = df["bank"].value_counts()
+    
+    for bank in df["bank"].unique():
+        bank_df = df[df["bank"] == bank].copy()
+        current = len(bank_df)
+        
+        if current < reviews_per_bank:
+            raise ValueError(
+                f"Only {current} reviews for {bank} — need at least {reviews_per_bank}! "
+                "Scrape more or lower the target."
+            )
+        elif current == reviews_per_bank:
+            print(f"{bank}: {current} → kept all (perfect)")
+        else:
+            bank_df = bank_df.sample(n=reviews_per_bank, random_state=random_state)
+            print(f"{bank}: {current} → downsampled to {reviews_per_bank}")
+        
+        balanced_dfs.append(bank_df)
+    
+    df_balanced = pd.concat(balanced_dfs, ignore_index=True)
+    
+    print(f"\nFINAL BALANCED DATASET: {len(df_balanced):,} reviews")
+    print(df_balanced["bank"].value_counts().to_string())
+    
+    return df_balanced
 def remove_non_latin_reviews(df):
     """
     Remove reviews containing non-Latin scripts (Amharic, Arabic, etc.)
@@ -129,5 +168,6 @@ def preprocess_pipeline(df):
     df = normalize_dates(df)
     df = standardize_bank_names(df)
     df = select_required_columns(df)
+    df= balance_dataset_by_bank(df)
     
     return df 
