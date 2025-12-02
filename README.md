@@ -30,7 +30,6 @@ Ethiopian-Bank-CX-Analysis/
 ├── notebooks/             # Exploratory analysis & visualization
 │   ├── 01_scraping_and_preprocessing.ipynb
 │   ├── 02_sentiment_and_themes.ipynb
-│   ├── 03_theme_clustering.ipynb
 │   └── 04_final_insights.ipynb
 ├── sql/                   # Schema + sample queries
 ├── .gitignore
@@ -61,5 +60,20 @@ python scripts/scrape_reviews.py   # collects ~400+ reviews per bank
 
 Final report (PDF) and all visualizations available in /notebooks/04_final_insights.ipynb and the submitted report.
 
-Challenge completed – Dec 2025
+Challenge completed – Dec 2 2025
 Built by Nathanael Dereje
+
+## Workflow Checklist for Data Loading
+assuming you have postgre installed on your device
+1. Create the Database
+```bash
+CREATE DATABASE bank_reviews;
+```
+2. Create the Tables (Load the Schema)
+```bash
+psql -d bank_reviews -f sql/schema.sql
+```
+3. Execute the Loading Script
+```bash
+python scripts/load_to_postgres.py
+```
