@@ -67,7 +67,7 @@ print(f"\nSUCCESS: {inserted} rows inserted!")
 # Verify
 cur.execute("SELECT COUNT(*) FROM reviews")
 count = cur.fetchone()[0]
-print(f"Verification: reviews table now has {count} rows")
+print(f"Verification to validate: reviews table now has {count} rows")
 
 cur.close()
 conn.close()
