@@ -1,0 +1,6 @@
+Potential biases and limitations:
+- Selection bias: reviews come from a subset of users who choose to leave reviews (may be more negative).
+- Platform bias: review distribution depends on the store/platform and its user base.
+- Temporal bias: older reviews may not reflect current app state; analyze by month/year.
+- Language and parsing errors: theme extraction depends on the upstream theme-mapping quality.
+- Sample size: small theme counts are noisy; require a minimum count when making recommendations.
